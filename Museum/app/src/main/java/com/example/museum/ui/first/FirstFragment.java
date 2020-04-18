@@ -1,6 +1,7 @@
 package com.example.museum.ui.first;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,10 +10,16 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 
 
 import com.example.museum.Adapter.ImageNetAdapter;
+import com.example.museum.Adapter.NewsAdapter;
 import com.example.museum.Datas.DataBean;
+import com.example.museum.Datas.News;
 import com.example.museum.MainActivity;
 import com.example.museum.NewsActivity;
 import com.example.museum.R;
@@ -52,6 +59,16 @@ public class FirstFragment extends Fragment implements OnPageChangeListener {
         banner.addOnPageChangeListener(this);
         //圆角
         banner.setBannerRound(BannerUtils.dp2px(5));
+
+        RecyclerView recyclerView = (RecyclerView)root.findViewById(R.id.recycler_firstview);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(recyclerView.getContext());
+        recyclerView.setLayoutManager(layoutManager);
+        NewsAdapter adapter = new NewsAdapter();
+        recyclerView.setAdapter(adapter);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(
+                getContext(),DividerItemDecoration.VERTICAL);
+        recyclerView.addItemDecoration(dividerItemDecoration);
+
         return root;
     }
 

@@ -27,12 +27,11 @@ public class ImageNetAdapter extends BannerAdapter<DataBean,ImageHolder> {
 
     @Override
     public void onBindView(ImageHolder holder, DataBean data, int position, int size) {
-
+        //可以加载网络图片的一个依赖
         Glide.with(holder.itemView)
                 .load(data.imageUrl)
                 .apply(RequestOptions.bitmapTransform(new RoundedCorners(20)))
                 .into(holder.imageView);
-        Log.i("ImageNetAdapter", "onBindView ");
     }
 
 }
