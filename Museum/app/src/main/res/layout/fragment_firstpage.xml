@@ -38,7 +38,7 @@
 <!--            android:visibility="gone"/>-->
 <!--    </RelativeLayout>-->
 <!--</androidx.constraintlayout.widget.ConstraintLayout>-->
-<LinearLayout
+<LinearLayout xmlns:banner="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
@@ -59,11 +59,12 @@
         android:textColor="@color/textTitle"
         android:text="精选" />
 
-    <com.youth.banner.Banner xmlns:banner="http://schemas.android.com/apk/res-auto"
+    <com.youth.banner.Banner
         android:id="@+id/banner"
-        android:layout_width="match_parent"
-        android:layout_height="180dp"
-        android:layout_margin="10dp"
+        android:layout_width="319dp"
+        android:layout_height="172dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
         banner:indicator_normal_color="@android:color/white"
         banner:indicator_selected_color="@color/colorPrimary" />
 

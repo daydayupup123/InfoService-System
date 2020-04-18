@@ -1,5 +1,6 @@
 package com.example.museum.ui.first;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,11 +13,12 @@ import androidx.fragment.app.Fragment;
 
 import com.example.museum.Adapter.ImageNetAdapter;
 import com.example.museum.Datas.DataBean;
+import com.example.museum.MainActivity;
+import com.example.museum.NewsActivity;
 import com.example.museum.R;
 import com.google.android.material.snackbar.Snackbar;
 import com.youth.banner.Banner;
 import com.youth.banner.indicator.CircleIndicator;
-import com.youth.banner.indicator.RoundLinesIndicator;
 import com.youth.banner.listener.OnPageChangeListener;
 import com.youth.banner.util.BannerUtils;
 
@@ -39,8 +41,12 @@ public class FirstFragment extends Fragment implements OnPageChangeListener {
         //设置指示器
         banner.setIndicator(new CircleIndicator(getContext()));
         //设置点击事件
+
         banner.setOnBannerListener((data, position) -> {
-            Snackbar.make(banner, ((DataBean) data).title, Snackbar.LENGTH_SHORT).show();
+                //转到新闻页面，并传递存储新闻的数组下标给该页面
+                Intent intent = new Intent(getContext(), NewsActivity.class);
+                intent.putExtra("Index",position);
+                startActivity(intent);
         });
         //添加切换监听
         banner.addOnPageChangeListener(this);
